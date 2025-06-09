@@ -1,4 +1,4 @@
-# 🔘 XYZC — XyzConsole
+[# 🔘 XYZC — XyzConsole
 
 **XYZC** is a modern C# library for creating styled, aligned, and interactive text-based UI components in the terminal.  
 Perfect for tools, dashboards, and text-based games.
@@ -69,3 +69,4 @@ git clone https://github.com/XyzLib/XYZC.git
 cd XYZC
 dotnet build
 ```
+](https://github.com/ayu-6/XYZC.git)
