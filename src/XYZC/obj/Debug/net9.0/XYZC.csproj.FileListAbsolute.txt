@@ -1,0 +1,11 @@
+/home/apex/extra/Projects/XYZC/src/XYZC/bin/Debug/net9.0/XYZC.deps.json
+/home/apex/extra/Projects/XYZC/src/XYZC/bin/Debug/net9.0/XYZC.dll
+/home/apex/extra/Projects/XYZC/src/XYZC/bin/Debug/net9.0/XYZC.pdb
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.GeneratedMSBuildEditorConfig.editorconfig
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.AssemblyInfoInputs.cache
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.AssemblyInfo.cs
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.csproj.CoreCompileInputs.cache
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.dll
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/refint/XYZC.dll
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.pdb
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/ref/XYZC.dll

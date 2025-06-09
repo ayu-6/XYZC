@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+
+namespace XYZC.Core;
+
+public class ConsoleScene : Dictionary<string, ConsoleObject>
+{
+    public static ConsoleScene DefaultScene = new ConsoleScene();
+    public static void ApplyDefaultScene()
+    {
+        DefaultScene.PositionX = Console.CursorLeft;
+        DefaultScene.PositionY = Console.CursorTop;
+        DefaultScene.Width = Console.WindowWidth;
+        DefaultScene.Height = Console.WindowHeight;
+    }
+    
+    public List<ConsoleObject> Statics = new List<ConsoleObject>();
+    
+    public int Width;
+    public int Height;
+
+    public int PositionX = 0;
+    public int PositionY = 0;
+    
+    private static readonly Random _random = new();
+
+    public ConsoleScene(bool fullWindow = true)
+    {
+        if(fullWindow) FullWindow();
+    }
+    public ConsoleScene(int width, int height)
+    {
+        Width = width;
+        Height = height;
+    }
+    public ConsoleScene(int width, int height, int positionX, int positionY)
+    {
+        Width = width;
+        Height = height;
+    }
+
+    public bool FullWindow()
+    {
+        bool result = Width != Console.WindowWidth || Height != Console.WindowHeight;
+        Width = Console.WindowWidth;
+        Height = Console.WindowHeight;
+        return result;
+    }
+
+    public void Add(ConsoleObject obj)
+    {
+        string key;
+        do
+        {
+            key = GenerateKey();
+        } while (this.ContainsKey(key));
+
+        this[key] = obj;
+    }
+
+    private string GenerateKey()
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var suffix = new char[6];
+        for (int i = 0; i < suffix.Length; i++)
+            suffix[i] = chars[_random.Next(chars.Length)];
+
+        return "_" + new string(suffix);
+    }
+    
+    public void Draw(bool Clear = true)
+    {
+        if(Clear) Console.Clear();
+        foreach (var obj in this.Values)
+        {
+            obj.Ready(this);
+            obj.Draw(this, ConsoleObject.DrawType.Full);
+        }
+    }
+    
+    public void UpdateDraw()
+    {
+        foreach (var obj in this.Values)
+        {
+            if (!Statics.Contains(obj))
+            {
+                obj.Ready(this);
+                obj.Draw(this, ConsoleObject.DrawType.Update);
+            }
+        }
+    }
+}
