@@ -4,18 +4,45 @@ public class ConsoleObject
 {
     public int SizeX, SizeY;
     public int LocalX, LocalY;
+    public int LocalWidth, LocalHeight;
+    public int Margin = 0;
+
+    public int Width
+    {
+        get => (HorizontalBoard == ConsoleBoard.Full ? Scene.Width : LocalWidth) - Margin;
+        set => LocalWidth = value;
+    }
+
+    public int Height
+    {
+        get => VerticalBoard == ConsoleBoard.Full ? Scene.Height : LocalHeight;
+        set => LocalHeight = value;
+    }
+    private ConsoleScene Scene;
+
+    public ConsoleObject()
+    {
+        // Initialize with default scene
+        Scene = ConsoleScene.DefaultScene ?? new ConsoleScene();
+    }
+
     public int X
     {
-        get => GetHorizontalAlign() + LocalX;
+        get => GetHorizontalAlign() + LocalX + Margin / 2;
         set => LocalX = value - GetHorizontalAlign();
     }
+    
     public int Y
     {
         get => GetVerticalAlign() + LocalY;
-        set => LocalY = value - GetHorizontalAlign();
+        set => LocalY = value - GetVerticalAlign();
     }
+    
     public ConsoleAlign HorizontalAlign = ConsoleAlign.Start;
     public ConsoleAlign VerticalAlign = ConsoleAlign.Start;
+    public ConsoleBoard HorizontalBoard = ConsoleBoard.Default;
+    public ConsoleBoard VerticalBoard = ConsoleBoard.Default;
+    public ConsoleDisplay Display = ConsoleDisplay.Line;
 
     public enum DrawType
     {
@@ -36,10 +63,9 @@ public class ConsoleObject
         Console.WriteLine();
     } 
     
-    private ConsoleScene Scene;
     public virtual void Ready(ConsoleScene scene)
     {
-        Scene = scene;
+        Scene = scene ?? ConsoleScene.DefaultScene ?? new ConsoleScene();
     }
 
     public int GetHorizontalAlign()
@@ -70,12 +96,4 @@ public class ConsoleObject
                 return 0;
         }
     }
-}
-
-public enum ConsoleAlign
-{
-    Start,
-    Center,
-    End,
-    Full
 }

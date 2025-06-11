@@ -30,3 +30,4 @@
 /home/apex/extra/Projects/XYZC/tests/XYZC.Tests/obj/Debug/net9.0/XYZC.Tests.pdb
 /home/apex/extra/Projects/XYZC/tests/XYZC.Tests/obj/Debug/net9.0/XYZC.Tests.genruntimeconfig.cache
 /home/apex/extra/Projects/XYZC/tests/XYZC.Tests/obj/Debug/net9.0/ref/XYZC.Tests.dll
+/home/apex/extra/Projects/XYZC/tests/XYZC.Tests/obj/Debug/net9.0/XYZC.Tests.sourcelink.json

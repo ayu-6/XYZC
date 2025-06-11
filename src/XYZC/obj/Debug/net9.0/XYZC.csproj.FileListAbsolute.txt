@@ -9,3 +9,4 @@
 /home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/refint/XYZC.dll
 /home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.pdb
 /home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/ref/XYZC.dll
+/home/apex/extra/Projects/XYZC/src/XYZC/obj/Debug/net9.0/XYZC.sourcelink.json

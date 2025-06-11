@@ -2,8 +2,9 @@ using XYZC.Core;
 
 namespace XYZC.Components;
 
-public class ConsoleBox : ConsoleObject
+public class Box : ConsoleObject
 {
+    
     public static readonly string[] DefaultParts = new string[] 
     {
         "┌",
@@ -137,18 +138,17 @@ public class ConsoleBox : ConsoleObject
     public string[] Parts = DoubleParts;
     private const int INFINITE_BOUNDS = 500;
 
-    public ConsoleBox()
+    public Box()
     {
-        SizeX = ConsolePanel.DEFAULT_WIDTH;
-        SizeY = ConsolePanel.DEFAULT_HEIGHT;
+        Display = ConsoleDisplay.None;
     }
-
+    
     public override void Draw(ConsoleScene scene, DrawType type)
     {
         int left = scene.PositionX + X;
         int top = scene.PositionY + Y;
-        int width = SizeX > 0 ? SizeX : scene.Width;
-        int height = SizeY > 0 ? SizeY : scene.Height;
+        int width = scene.Width;
+        int height = scene.Height;
 
         Printer.AreaPrint(Parts[0], left, top, -INFINITE_BOUNDS, INFINITE_BOUNDS, -INFINITE_BOUNDS, INFINITE_BOUNDS);
         string topLine = string.Concat(Enumerable.Repeat(Parts[1], width - 2));

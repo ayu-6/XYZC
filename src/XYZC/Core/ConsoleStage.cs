@@ -19,6 +19,15 @@ public class ConsoleStage
 
     public bool active = false;
 
+    public void Frame()
+    {
+        Console.CursorVisible = false;
+        Console.Clear();
+        Scene.Draw();
+        if (Scene.FullWindow()) Scene.Draw();
+        else Scene.UpdateDraw();
+        Console.WriteLine("\n\n");
+    }
     public void Enable()
     {
         active = true;

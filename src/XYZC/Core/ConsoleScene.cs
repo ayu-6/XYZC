@@ -16,11 +16,23 @@ public class ConsoleScene : Dictionary<string, ConsoleObject>
     
     public List<ConsoleObject> Statics = new List<ConsoleObject>();
     
-    public int Width;
-    public int Height;
+    public int LineHeight = 1;
+    
+    public int Width, Height;
 
-    public int PositionX = 0;
-    public int PositionY = 0;
+    public int LocalPositionX, LocalPositionY;
+
+    public int PositionX
+    {
+        get => LocalPositionX;
+        set => LocalPositionX = value;
+    }
+
+    public int PositionY
+    {
+        get => LocalPositionY;
+        set => LocalPositionY = value;
+    }
     
     private static readonly Random _random = new();
 
@@ -71,22 +83,30 @@ public class ConsoleScene : Dictionary<string, ConsoleObject>
     public void Draw(bool Clear = true)
     {
         if(Clear) Console.Clear();
+        int number = 0;
         foreach (var obj in this.Values)
         {
+            if(obj.Display != ConsoleDisplay.None) obj.LocalY += number * LineHeight;
             obj.Ready(this);
             obj.Draw(this, ConsoleObject.DrawType.Full);
+            if(obj.Display != ConsoleDisplay.None) obj.LocalY -= number * LineHeight;
+            if(obj.Display == ConsoleDisplay.Line) number++;
         }
     }
     
     public void UpdateDraw()
     {
+        int number = 0;
         foreach (var obj in this.Values)
         {
             if (!Statics.Contains(obj))
             {
+                if(obj.Display != ConsoleDisplay.None) obj.LocalY += number * LineHeight;
                 obj.Ready(this);
-                obj.Draw(this, ConsoleObject.DrawType.Update);
+                obj.Draw(this, ConsoleObject.DrawType.Full);
+                if(obj.Display != ConsoleDisplay.None) obj.LocalY -= number * LineHeight;
             }
+            if(obj.Display == ConsoleDisplay.Line) number++;
         }
     }
 }

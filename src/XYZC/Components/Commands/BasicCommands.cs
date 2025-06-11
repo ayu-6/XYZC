@@ -93,23 +93,34 @@ public class BasicCommands
     private static void CommandEffect(string[] value)
     {
         if (value.Length == 0) return;
-        string effect = value[0].ToLower();
+        string input = value[0].ToLower();
 
-        string ansiCode = effect switch
+        if (input == "reset")
         {
-            "reset" => "0",
-            "bold" => "1",
-            "dim" => "2",
-            "underline" => "4",
-            "blink" => "5",
-            "reverse" => "7",
-            "hidden" => "8",
-            _ => ""
-        };
+            Console.Write("\x1b[0m"); // Reset all effects
+            return;
+        }
 
-        if (ansiCode != "")
+        switch (input)
         {
-            Console.Write($"\x1b[{ansiCode}m");
+            case "bold":
+                Console.Write("\x1b[1m");
+                break;
+            case "dim":
+                Console.Write("\x1b[2m");
+                break;
+            case "italic":
+                Console.Write("\x1b[3m");
+                break;
+            case "underline":
+                Console.Write("\x1b[4m");
+                break;
+            case "blink":
+                Console.Write("\x1b[5m");
+                break;
+            case "rest":
+                Console.Write("\x1b[0m"); // Reset all effects for "rest" command
+                break;
         }
     }
 

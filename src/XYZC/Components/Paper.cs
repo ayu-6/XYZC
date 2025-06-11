@@ -3,16 +3,17 @@ using XYZC.Core;
 
 namespace XYZC.Components;
 
-public class ConsolePaper : ConsoleObject
+public class Paper : ConsoleObject
 {
-    public int Width, Height;
     public string Addon = string.Empty;
 
-    public ConsolePaper(int width, int height)
+    public Paper(int width, int height)
     {
         Width = width;
         Height = height;
     }
+
+    public Paper(){}
     
     public override void Ready(ConsoleScene scene)
     {
@@ -24,7 +25,7 @@ public class ConsolePaper : ConsoleObject
     public override void Draw(ConsoleScene scene, DrawType type = DrawType.Full)
     {
         var paper = CreateSpaceBlock(Width, Height);
-        Printer.AreaPrint(Addon + paper, scene.PositionX + X, scene.PositionY + Y, 0, Console.WindowWidth, 0, Console.WindowHeight);
+        Printer.AreaPrint(Addon + paper, scene.PositionX + X, scene.PositionY + Y, scene.PositionX, scene.Width, scene.PositionY, scene.Height);
         base.Draw(scene, type);
     }
     

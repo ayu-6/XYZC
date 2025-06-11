@@ -4,13 +4,13 @@ using System.Text;
 
 namespace XYZC.Components
 {
-    public class ConsoleLabel : ConsoleObject
+    public class Label : ConsoleObject
     {
         private const int DEFAULT_PADDING = 2;
 
-        public ConsoleLabel() { }
+        public Label() { }
 
-        public ConsoleLabel(string text)
+        public Label(string text)
         {
             Text = text;
             LocalX = DEFAULT_PADDING;
@@ -20,16 +20,16 @@ namespace XYZC.Components
         public Color? ForegroundColor { get; set; }
         public Color? BackgroundColor { get; set; }
         public TextEffect Effects { get; set; } = TextEffect.None;
-        public ConsoleAlign TextAlign { get; set; } = ConsoleAlign.Start;
+        public TextAlign TextAlign { get; set; } = TextAlign.Left;
 
-        private int DefaultWrapWidth => ConsolePanel.DEFAULT_WIDTH - (2 * DEFAULT_PADDING);
-        public int? WrapWidth { get; set; }
+        private int DefaultWrapWidth => 100 - (2 * DEFAULT_PADDING);
+        public int? Width { get; set; }
         public bool SmartWrap { get; set; } = true;
 
         [Obsolete("Use WrapWidth instead")]
         public int? MaxWidth { 
-            get => WrapWidth; 
-            set => WrapWidth = value; 
+            get => Width; 
+            set => Width = value; 
         }
 
         public override void Draw(ConsoleScene scene, DrawType type)
@@ -40,7 +40,7 @@ namespace XYZC.Components
             int startY = scene.PositionY + Y;
             
             int effectiveWidth = Math.Min(
-                WrapWidth ?? DefaultWrapWidth,
+                Width ?? DefaultWrapWidth,
                 Math.Min(scene.Width - (2 * DEFAULT_PADDING), Console.WindowWidth - startX)
             );
             
@@ -75,8 +75,8 @@ namespace XYZC.Components
             var rawLines = Text.Split('\n');
             var wrappedLines = new List<string>();
 
-            // Apply wrapping if WrapWidth is set - breaks long lines into multiple new lines
-            if (WrapWidth.HasValue && WrapWidth.Value > 0)
+            // First wrap the text if needed
+            if (Width.HasValue && Width.Value > 0)
             {
                 foreach (var line in rawLines)
                 {
@@ -86,13 +86,14 @@ namespace XYZC.Components
                         continue;
                     }
 
-                    if (GetTextLength(line) <= WrapWidth.Value)
+                    int visibleLength = GetTextLength(line);
+                    if (visibleLength <= Width.Value)
                     {
                         wrappedLines.Add(line);
                         continue;
                     }
 
-                    wrappedLines.AddRange(WrapText(line, WrapWidth.Value));
+                    wrappedLines.AddRange(WrapText(line, Width.Value));
                 }
             }
             else
@@ -100,18 +101,20 @@ namespace XYZC.Components
                 wrappedLines = rawLines.ToList();
             }
 
-            // Calculate effective width for alignment (excluding command tags)
+            // Calculate effective width for alignment
             int maxVisibleLength = wrappedLines.Any() ? 
                 wrappedLines.Max(l => GetTextLength(l)) : 0;
 
-            // If WrapWidth is set, use it as the target width
-            int targetWidth = WrapWidth ?? maxVisibleLength;
+            // Use WrapWidth if set, otherwise use the maximum visible length
+            int targetWidth = Width ?? maxVisibleLength;
 
             // Apply text alignment to each line
-            foreach (var line in wrappedLines)
+            for (int i = 0; i < wrappedLines.Count; i++)
             {
-                var justified = JustifyLine(line, targetWidth);
-                builder.AppendLine(justified);
+                var justified = JustifyLine(wrappedLines[i], targetWidth);
+                builder.Append(justified);
+                if (i < wrappedLines.Count - 1)
+                    builder.AppendLine();
             }
 
             return builder.ToString();
@@ -119,21 +122,21 @@ namespace XYZC.Components
 
         private string JustifyLine(string line, int width)
         {
+            // Extract commands and get clean text
+            var (prefix, mainText, suffix) = ExtractCommands(line);
+            
             // Get visible length (excluding commands)
-            int visibleLength = GetTextLength(line);
+            int visibleLength = GetTextLength(mainText);
             int space = width - visibleLength;
             
             if (space <= 0) return line;
 
-            // Split the line into visible text and commands for proper alignment
-            var (prefix, mainText, suffix) = ExtractCommands(line);
-
             string alignedText = TextAlign switch
             {
-                ConsoleAlign.Center => prefix + new string(' ', space / 2) + mainText + suffix,
-                ConsoleAlign.End => prefix + new string(' ', space) + mainText + suffix,
-                ConsoleAlign.Full => prefix + JustifyTextFull(mainText, width) + suffix,
-                _ => line // Start alignment, return as is
+                TextAlign.Center => prefix + new string(' ', space / 2) + mainText + new string(' ', space - (space / 2)) + suffix,
+                TextAlign.Right => prefix + new string(' ', space) + mainText + suffix,
+                TextAlign.Full when mainText.Contains(' ') => prefix + JustifyTextFull(mainText, width) + suffix,
+                _ => prefix + mainText + new string(' ', space) + suffix // Start alignment or single word for Full
             };
 
             return alignedText;
@@ -326,7 +329,7 @@ namespace XYZC.Components
             var wrappedLines = new List<string>();
 
             // Apply wrapping if WrapWidth is set - breaks long lines into multiple new lines
-            if (WrapWidth.HasValue && WrapWidth.Value > 0)
+            if (Width.HasValue && Width.Value > 0)
             {
                 foreach (var line in rawLines)
                 {
@@ -336,13 +339,13 @@ namespace XYZC.Components
                         continue;
                     }
 
-                    if (line.Length <= WrapWidth.Value)
+                    if (line.Length <= Width.Value)
                     {
                         wrappedLines.Add(line);
                         continue;
                     }
 
-                    wrappedLines.AddRange(WrapText(line, WrapWidth.Value));
+                    wrappedLines.AddRange(WrapText(line, Width.Value));
                 }
             }
             else
