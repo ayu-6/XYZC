@@ -1,3 +1,5 @@
+![ShowIt](https://github.com/user-attachments/assets/83a4e2c0-95d2-44de-9cc0-1aad577f20c6)
+
 <h1 align="center">
     XYZC — XyzConsole
 </h1>
