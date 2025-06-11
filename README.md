@@ -31,7 +31,7 @@ you can add XYZC package to your project by:
 ```csharp
 using XYZC.Components;
 
-new ConsoleLabel("Hello, XYZC!")
+new Label("Hello, XYZC!")
 {
     ForegroundColor = Color.Cyan,
     BackgroundColor = Color.Black,
