@@ -47,10 +47,10 @@ new ConsoleLabel("Hello, XYZC!")
 |------------------|----------------------------------------|
 | `ConsoleScene`   | Root canvas and container              |
 | `ConsoleStage`   | Manages the active drawing window      |
-| `ConsoleBox`     | Renders styled bordered boxes          |
-| `ConsoleLabel`   | Displays styled text                   |
-| `ConsolePanel`   | Panel container for organized layout   |
-| `ConsolePaper`   | Clean drawing surface for UI content   |
+| `Box`            | Renders styled bordered boxes          |
+| `Label`          | Displays styled text                   |
+| `Panel`          | Panel container for organized layout   |
+| `Paper`          | Clean drawing surface for UI content   |
 
 ---
 
