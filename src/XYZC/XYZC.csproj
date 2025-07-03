@@ -7,7 +7,7 @@
 
     <!-- NuGet Package Details -->
     <PackageId>XYZC</PackageId>
-    <Version>1.0.0-beta.1</Version>
+    <Version>1.1.0-beta</Version>
     <Authors>Apex</Authors>
     <Description>A modern C# library for creating styled, aligned, and interactive text-based UI components in the terminal.</Description>
     <PackageTags>console;ui;tui;terminal;csharp;dotnet;console-ui</PackageTags>
@@ -16,12 +16,12 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>XyzcBoard.png</PackageIcon>
+    <PackageIcon>XYZC.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="../../README.md" Pack="true" PackagePath="\"/>
-    <None Include="../../images/XyzcBoard.png" Pack="true" PackagePath="\"/>
+    <None Include="../../images/XYZC.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
