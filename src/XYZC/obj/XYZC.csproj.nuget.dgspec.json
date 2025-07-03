@@ -20,7 +20,7 @@
           "net9.0"
         ],
         "sources": {
-          "/home/apex/extra/dotnet/library-packs": {},
+          "/home/apex/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/apex/extra/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/apex/.dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

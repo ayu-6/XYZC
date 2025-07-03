@@ -17,8 +17,7 @@ public class Program
     {
         if (args.Length == 0)
         {
-            XyzConsole.WriteLine("Please provide an example name.");
-            XyzConsole.WriteLine("Available examples: " + string.Join(", ", Examples.Keys));
+            Test.Active();
             return;
         }
 

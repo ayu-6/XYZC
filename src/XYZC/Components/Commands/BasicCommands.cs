@@ -7,11 +7,32 @@ public class BasicCommands
 {
     public static void Import()
     {
+        Commander.AddCommand("add", CommandAddVariable);
+        Commander.AddCommand("remove", CommandRemoveVariable);
+        Commander.AddCommand("set", CommandSetVariable);
         Commander.AddCommand("color", CommandColor);
         Commander.AddCommand("background", CommandBackground);
         Commander.AddCommand("effect", CommandEffect);
     }
 
+    private static void CommandAddVariable(string[] value)
+    {
+        if (value.Length < 2) return;
+        Commander.Variables.Add(value[0], value[1]);
+    }
+    
+    private static void CommandRemoveVariable(string[] value)
+    {
+        if (value.Length < 1) return;
+        Commander.Variables.Remove(value[0]);
+    }
+
+    private static void CommandSetVariable(string[] value)
+    {
+        if (value.Length < 2) return;
+        Commander.Variables[value[0]] = value[1];
+    }
+    
     private static void CommandColor(string[] value)
     {
         if (value.Length == 0) return;

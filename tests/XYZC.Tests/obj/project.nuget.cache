@@ -3,6 +3,8 @@
   "dgSpecHash": "Trr8MlAeKqo=",
   "success": true,
   "projectFilePath": "/home/apex/extra/Projects/XYZC/tests/XYZC.Tests/XYZC.Tests.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/apex/.nuget/packages/xyzconsole/1.1.0-beta/xyzconsole.1.1.0-beta.nupkg.sha512"
+  ],
   "logs": []
 }
