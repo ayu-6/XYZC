@@ -60,7 +60,7 @@ public class ConsoleObject
     {
         ConsoleScene.ApplyDefaultScene();
         Draw(ConsoleScene.DefaultScene, DrawType.Single);
-        Console.WriteLine();
+        if(Display == ConsoleDisplay.Line) Console.WriteLine();
     } 
     
     public virtual void Ready(ConsoleScene scene)

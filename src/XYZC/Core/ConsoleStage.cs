@@ -19,6 +19,22 @@ public class ConsoleStage
 
     public bool active = false;
 
+    public void UpdateStatic(ConsoleObject obj)
+    {
+        Scene.Statics.Remove(obj);
+        bool relook = false;
+        void Upd()
+        {
+            if (relook)
+            {
+                UpdateActions.Remove(Upd);
+                Scene.Statics.Add(obj);
+            }
+            else relook = true;
+        }
+        UpdateActions.Add(Upd);
+    }
+
     public void Frame()
     {
         Console.CursorVisible = false;
@@ -49,7 +65,8 @@ public class ConsoleStage
             DeltaTime = (float)((currentTicks - lastTicks) / tickFrequency);
             lastTicks = currentTicks;
 
-            foreach (var action in UpdateActions)
+            var copyUpdateActions = UpdateActions.ToList();
+            foreach (var action in copyUpdateActions)
                 action.Invoke();
 
             if (Scene.FullWindow()) Scene.Draw();
@@ -68,5 +85,22 @@ public class ConsoleStage
 
         foreach (var action in DisableActions)
             action.Invoke();
+    }
+
+    public bool InputWork = true;
+    public void EndInput()
+    {
+        InputWork = false;
+        new Thread(() =>
+        {
+            while (!InputWork)
+            {
+                Console.ReadKey(true);
+            }
+        }).Start();
+    }
+    public void StartInput()
+    {
+        InputWork = true;
     }
 }

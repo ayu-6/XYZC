@@ -59,7 +59,7 @@ public class ConsoleScene : Dictionary<string, ConsoleObject>
         return result;
     }
 
-    public void Add(ConsoleObject obj)
+    public string Add(ConsoleObject obj)
     {
         string key;
         do
@@ -68,8 +68,15 @@ public class ConsoleScene : Dictionary<string, ConsoleObject>
         } while (this.ContainsKey(key));
 
         this[key] = obj;
+        return key;
     }
 
+    public string Static(ConsoleObject obj)
+    {
+        Statics.Add(obj);
+        return Add(obj);
+    }
+    
     private string GenerateKey()
     {
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -88,6 +95,9 @@ public class ConsoleScene : Dictionary<string, ConsoleObject>
         {
             if(obj.Display != ConsoleDisplay.None) obj.LocalY += number * LineHeight;
             obj.Ready(this);
+        }
+        foreach (var obj in this.Values)
+        {
             obj.Draw(this, ConsoleObject.DrawType.Full);
             if(obj.Display != ConsoleDisplay.None) obj.LocalY -= number * LineHeight;
             if(obj.Display == ConsoleDisplay.Line) number++;

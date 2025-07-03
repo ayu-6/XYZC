@@ -13,7 +13,6 @@ namespace XYZC.Components
         public Label(string text)
         {
             Text = text;
-            LocalX = DEFAULT_PADDING;
         }
 
         public string Text { get; set; } = string.Empty;

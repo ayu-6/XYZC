@@ -4,6 +4,24 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- NuGet Package Details -->
+    <PackageId>XYZC</PackageId>
+    <Version>1.0.0-beta.1</Version>
+    <Authors>Apex</Authors>
+    <Description>A modern C# library for creating styled, aligned, and interactive text-based UI components in the terminal.</Description>
+    <PackageTags>console;ui;tui;terminal;csharp;dotnet;console-ui</PackageTags>
+    <PackageProjectUrl>https://github.com/ayu-6/XYZC</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ayu-6/XYZC.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>XyzcBoard.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+    <None Include="../../images/XyzcBoard.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
 </Project>

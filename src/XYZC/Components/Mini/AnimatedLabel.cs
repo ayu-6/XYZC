@@ -1,8 +1,6 @@
 using XYZC.Core;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace XYZC.Components;
+namespace XYZC.Components.Mini;
 
 public class AnimatedLabel : Label
 {

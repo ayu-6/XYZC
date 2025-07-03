@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "XYZC/1.0.0": {
+      "XYZC/1.0.0-beta.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "compile": {
@@ -15,7 +15,7 @@
     }
   },
   "libraries": {
-    "XYZC/1.0.0": {
+    "XYZC/1.0.0-beta.1": {
       "type": "project",
       "path": "../../src/XYZC/XYZC.csproj",
       "msbuildProject": "../../src/XYZC/XYZC.csproj"
@@ -23,7 +23,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "XYZC >= 1.0.0"
+      "XYZC >= 1.0.0-beta.1"
     ]
   },
   "packageFolders": {
@@ -45,6 +45,7 @@
         "net9.0"
       ],
       "sources": {
+        "/home/apex/.dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -88,7 +89,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/apex/extra/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/apex/.dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
