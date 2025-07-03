@@ -5,10 +5,10 @@
   },
   "projects": {
     "/home/apex/extra/Projects/XYZC/src/XYZC/XYZC.csproj": {
-      "version": "1.0.0-beta.1",
+      "version": "1.1.0-beta",
       "restore": {
         "projectUniqueName": "/home/apex/extra/Projects/XYZC/src/XYZC/XYZC.csproj",
-        "projectName": "XYZC",
+        "projectName": "XyzConsole",
         "projectPath": "/home/apex/extra/Projects/XYZC/src/XYZC/XYZC.csproj",
         "packagesPath": "/home/apex/.nuget/packages/",
         "outputPath": "/home/apex/extra/Projects/XYZC/src/XYZC/obj/",
@@ -20,7 +20,7 @@
           "net9.0"
         ],
         "sources": {
-          "/home/apex/.dotnet/library-packs": {},
+          "/home/apex/extra/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/apex/.dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/apex/extra/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

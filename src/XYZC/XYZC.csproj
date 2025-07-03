@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <!-- NuGet Package Details -->
-    <PackageId>XYZC</PackageId>
+    <PackageId>XyzConsole</PackageId>
     <Version>1.1.0-beta</Version>
     <Authors>Apex</Authors>
     <Description>A modern C# library for creating styled, aligned, and interactive text-based UI components in the terminal.</Description>

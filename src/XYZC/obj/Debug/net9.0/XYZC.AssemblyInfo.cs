@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute(("A modern C# library for creating styled, aligned, and interactive text-based UI c" +
     "omponents in the terminal."))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0-beta+f446238cd160eb187d9c2c10bf23143929b4c4f1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0-beta+6a4996bb60194ee66ff5faa917c9823a5c868add")]
 [assembly: System.Reflection.AssemblyProductAttribute("XYZC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XYZC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.0")]
