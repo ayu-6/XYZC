@@ -5,10 +5,10 @@
 
 ## 📦 Installation
 
-XYZC will be available on NuGet soon. For now, you can install it by cloning the repository.
+you can install XYZC/XyzConsole by cloning the repository or use this:
 
 ```bash
-# Coming soon to NuGet!
+dotnet add package XyzConsole
 ```
 
 ## 🚀 Usage
