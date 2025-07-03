@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/ayu-6/XYZC</projectUrl>
     <description>A modern C# library for creating styled, aligned, and interactive text-based UI components in the terminal.</description>
     <tags>console ui tui terminal csharp dotnet console-ui</tags>
-    <repository type="git" url="https://github.com/ayu-6/XYZC.git" commit="6a4996bb60194ee66ff5faa917c9823a5c868add" />
+    <repository type="git" url="https://github.com/ayu-6/XYZC.git" commit="979b084b6c7f019be4e9ba891751c956ddb55b96" />
     <dependencies>
       <group targetFramework="net9.0" />
     </dependencies>
