@@ -26,7 +26,7 @@ new Label("Hello, [color cyan]XYZC[color reset]!")
 }.Draw();
 ```
 
-For more complex UIs, you can use a `ConsoleScene` to manage multiple components:
+For more complex UIs, you can use a `ConsoleScene` to manage multiple components.
 
 ## 📂 Core Components
 
